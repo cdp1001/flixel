@@ -349,6 +349,24 @@ package org.flixel
 				}
 			}
 		}
+
+		override public function overlapsPoint(X:Number, Y:Number, PerPixel:Boolean = false):Boolean 
+		{
+			var o:FlxObject;
+			var hit:Boolean = false;
+			var ml:uint = members.length;
+			for(var i:uint = 0; i < ml; i++)
+			{
+				o = members[i] as FlxObject;
+				if(o != null)
+				{
+					if (o.overlapsPoint(X, Y, PerPixel)) {
+						hit = true
+					}
+				}
+			}
+			return hit
+		}
 		
 		/**
 		 * Automatically goes through and calls update on everything you added,
